@@ -1,0 +1,8 @@
+<center><h1>Welcome, <%= @user.name %>!</h1></center>
+
+My orders:
+<ul>
+	<% @user.order_customers.each do |order| %>
+		<li><%= link_to "#{order.id}, #{order.title}", order %></li>
+	<% end %>
+</ul>

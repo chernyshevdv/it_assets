@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ItAssets</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<%= link_to "IT Assets", '#', id: "logo" %>
+				<nav>
+					<ul class="nav pull-right">
+						<li><%= link_to "Home", '#' %></li>
+						<% if signed_in? %>
+						<li><%= link_to current_user.name, current_user %></li>
+						<li><%= link_to "Logout", logout_path %>
+						<% else %>
+						<li><%= link_to "Sign in", login_path %></li>
+						<% end %>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<div class="container"><%= yield %></div>
+</body>
+</html>

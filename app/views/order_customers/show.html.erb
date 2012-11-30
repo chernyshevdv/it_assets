@@ -1,0 +1,7 @@
+<h1>Order #<%= @order.id %>, <%= @order.title %></h1>
+Rows:
+<ul>
+	<% @order.order_rows.each do |row| %>
+		<li><%= "#{row.id}, #{row.cfo_id}, #{row.goods_id}, #{row.quantity}, #{row.price}" %></li>
+	<% end %>
+</ul>
