@@ -9,7 +9,7 @@ private
 
 	def correct_user
 		@user = Employee.find(params[:id])
-		redirect_to '/login' unless current_user?(@user)
+		redirect_to root_path unless current_user?(@user)
 	end
 
 end

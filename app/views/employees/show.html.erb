@@ -1,8 +1,15 @@
 <center><h1>Welcome, <%= @user.name %>!</h1></center>
 
 My orders:
-<ul>
+<table class="table table-condensed">
+	<thead>
+		<th>id</th>
+		<th>title</th>
+	</thead>	
 	<% @user.order_customers.each do |order| %>
-		<li><%= link_to "#{order.id}, #{order.title}", order %></li>
+	<tr>
+		<td><%= link_to "#{order.id}", order %></td>
+		<td><%= link_to "#{order.title}", order %></td>
+	</tr>
 	<% end %>
-</ul>
+</table>

@@ -5,5 +5,5 @@ class Employee < ActiveRecord::Base
 
 	attr_accessible :id, :name, :cfo_id
 
-	has_many :order_customers, foreign_key: "initiator"
+	has_many :order_customers, foreign_key: "initiator", conditions: "closed=0"
 end

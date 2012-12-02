@@ -1,7 +1,41 @@
-<h1>Order #<%= @order.id %>, <%= @order.title %></h1>
-Rows:
-<ul>
+<h1>Заказ №<%= @order.id %></h1>
+<table>
+	<tr>
+		<td>
+			<dl>
+				<dt>Название:</dt><dd><%= @order.title %></dd>
+				<dt>Статус:</dt><dd><%= @order.status %></dd>
+				<dt>Создан:</dt><dd><%= @order.openDate %></dd>
+				<dt>Закрыт:</dt><dd><%= @order.closeDate %></dd>
+			</dl>
+		</td>
+		<td valign="top">
+			<dl>
+				<dt>Менеджер:</dt><dd><%= @order.manager.name %></dd>
+			</dl>
+		</td>
+	</tr>	
+</table>
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Номенклатура</th>
+			<th>Цена</th>
+			<th>Кол-во</th>
+			<th>Статус</th>
+		</tr>
+	</thead>
+	<tbody>
 	<% @order.order_rows.each do |row| %>
-		<li><%= "#{row.id}, #{row.cfo_id}, #{row.goods_id}, #{row.quantity}, #{row.price}" %></li>
-	<% end %>
+		<tr>
+			<td><%= row.article.title %></td>
+			<td><%= row.price %></td>
+			<td><%= row.quantity %></td>
+			<td><%= row.status %></td>
+	<% end %>	
+	</tbody>
+</table>
+<ul>
+	
 </ul>

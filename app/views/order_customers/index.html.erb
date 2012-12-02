@@ -1,5 +1,11 @@
-<ul>
+<table class="table">
+	<thead>
+		<th>id</th>
+		<th>title</th>
+	</thead>	
 	<% @orders.each do |order| %>
-		<li><%= order.id %>, <%= order.title %></li>
+		<tr>
+			<td><%= order.id %></td><td><%= order.title %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>

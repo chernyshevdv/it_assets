@@ -7,6 +7,9 @@ class SessionsController < ApplicationController
 		if user
 			sign_in user
 			redirect_to current_user
+		else
+			flash[:error] = 'Login or password is incorrect.'
+			redirect_to login_path
 		end
 	end
 

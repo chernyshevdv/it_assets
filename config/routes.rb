@@ -15,9 +15,12 @@ ItAssets::Application.routes.draw do
   resources :sessions
   resources :order_customers
   resources :employees
+  resources :static_pages
 
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
+
+  root to: 'static_pages#index'
 
   # Sample resource route with options:
   #   resources :products do

@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: sqlserver
-  host: btlta4es-sql01
+  host: 10.1.10.35
   database: it_assets
   username: rails
   password: htkmcsigfks
