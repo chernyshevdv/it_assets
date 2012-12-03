@@ -25,6 +25,7 @@
 			<th>Подразделение</th>
 			<th>Стоимость</th>
 			<th>Статус</th>
+			<th><abbr title="Примерная дата прихода">Приход</abbr></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,6 +35,7 @@
 			<td><%= row.department.title %></td>
 			<td class="right"><nobr><%= row.quantity %> &times; <%= row.price %></nobr></td>
 			<td><%= row.status %></td>
+			<td><%= l row.accept.stamp.to_date, :format => :default unless row.accept.nil? %></td>
 		</tr>
 	<% end %>
 	</tbody>

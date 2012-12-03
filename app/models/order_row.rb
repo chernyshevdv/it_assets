@@ -3,6 +3,7 @@ class OrderRow < ActiveRecord::Base
 	self.primary_key = "row_id"
 
 	belongs_to :order_customer
+	belongs_to :accept
 	belongs_to :article, foreign_key: "goods_id", class_name: "Article"
 	belongs_to :department, foreign_key: "cfo_id", class_name: "Department"
 
