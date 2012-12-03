@@ -23,8 +23,6 @@
 						</li>
 						<li><%= link_to "Профиль", edit_employee_path(current_user) %></li>
 						<li><%= link_to "Выход (#{current_user.name})", logout_path %>
-						<% else %>
-						<li><%= link_to "Логин", login_path %></li>
 						<% end %>
 					</ul>
 				</nav>
