@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
 	def create
 		user = Employee.find_by_login(params[:session][:login])
-		if user
+		if user && (user.password_digest.nil? || user.authenticate(params[:session][:password]))
 			sign_in user
 			redirect_to current_user
 		else

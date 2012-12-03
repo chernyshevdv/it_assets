@@ -8,6 +8,7 @@ gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
 gem 'bootstrap-sass'
 gem 'rails-i18n'
+gem 'bcrypt-ruby'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

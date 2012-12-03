@@ -14,6 +14,20 @@ class EmployeesController < ApplicationController
 		end
 	end
 
+	def edit
+		@employee = Employee.find(params[:id])
+	end
+
+	def update
+		@employee = Employee.find(params[:id])
+		if @employee.update_attributes(params[:employee])
+			flash[:success] = "Updated settings successfully"
+			redirect_to @employee
+		else
+			render 'edit'
+		end
+	end
+
 private
 
 	def correct_user

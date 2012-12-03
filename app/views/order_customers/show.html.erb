@@ -11,7 +11,8 @@
 		</td>
 		<td valign="top">
 			<dl>
-				<dt>Менеджер:</dt><dd><%= @order.manager.name %></dd>
+				<dt>Инициатор:</dt><dd><%= @order.initiator.annotated_name %></dd>
+				<dt>Менеджер:</dt><dd><%= @order.manager.annotated_name %></dd>
 			</dl>
 		</td>
 	</tr>	

@@ -1,0 +1,19 @@
+<center><h1>Редактор профиля: <%= @employee.name %></h1></center>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@employee) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :extension, 'Телефон' %>
+			<%= f.text_field :extension %>
+
+			<%= f.label :password, 'Пароль' %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, 'Подтвердить пароль' %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.submit "Сохранить изменения", class: "btn btn-large btn-primary" %>
+		<% end %>		
+	</div>
+</div>
