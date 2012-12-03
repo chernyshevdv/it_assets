@@ -17,6 +17,9 @@ class SessionsController < ApplicationController
 			flash[:error] = 'Login or password is incorrect.'
 			redirect_to login_path
 		end
+	rescue => e
+		flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
+		redirect_to login_path
 	end
 
 	def show
