@@ -1,0 +1,21 @@
+<center><h1>Заказы моего подразделения</h1></center>
+<table class="table table-condensed">
+	<thead>
+		<th>№</th>
+		<th>Название</th>
+		<th>Подразеделение</th>
+		<th>Инициатор</th>
+		<th>Статус</th>
+		<th>Менеджер</th>
+	</thead>	
+	<% @user.cfo_orders.each do |order| %>
+	<tr>
+		<td><%= link_to "#{order.id}", order %></td>
+		<td><%= link_to "#{order.title}", order %></td>
+		<td><%= order.department.title %></td>
+		<td><%= order.initiator.name unless order.initiator.nil? %></td>
+		<td><%= order.status %></td>
+		<td><%= order.manager.name %></td>
+	</tr>
+	<% end %>
+</table>
