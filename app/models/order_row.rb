@@ -4,6 +4,7 @@ class OrderRow < ActiveRecord::Base
 
 	belongs_to :order_customer
 	belongs_to :article, foreign_key: "goods_id", class_name: "Article"
+	belongs_to :department, foreign_key: "cfo_id", class_name: "Department"
 
 	default_scope order: 'row_id ASC'
 end

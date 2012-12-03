@@ -21,8 +21,8 @@
 	<thead>
 		<tr>
 			<th>Номенклатура</th>
-			<th>Цена</th>
-			<th>Кол-во</th>
+			<th>Подразделение</th>
+			<th>Стоимость</th>
 			<th>Статус</th>
 		</tr>
 	</thead>
@@ -30,11 +30,18 @@
 	<% @order.order_rows.each do |row| %>
 		<tr>
 			<td><%= row.article.title %></td>
-			<td><%= row.price %></td>
-			<td><%= row.quantity %></td>
+			<td><%= row.department.title %></td>
+			<td class="right"><nobr><%= row.quantity %> &times; <%= row.price %></nobr></td>
 			<td><%= row.status %></td>
-	<% end %>	
+		</tr>
+	<% end %>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="2"><strong>ИТОГО:</strong></td>
+			<td colspan="3"><strong><%= number_to_currency(@order.total, locale: :ru) %></strong></td>
+		</tr>
+	</tfoot>
 </table>
 <ul>
 	

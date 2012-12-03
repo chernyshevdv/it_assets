@@ -1,15 +1,17 @@
-<center><h1>Welcome, <%= @user.name %>!</h1></center>
-
-My orders:
+<center><h1>Мои заказы</h1></center>
 <table class="table table-condensed">
 	<thead>
-		<th>id</th>
-		<th>title</th>
+		<th>№</th>
+		<th>Название</th>
+		<th>Статус</th>
+		<th>Менеджер</th>
 	</thead>	
 	<% @user.order_customers.each do |order| %>
 	<tr>
 		<td><%= link_to "#{order.id}", order %></td>
 		<td><%= link_to "#{order.title}", order %></td>
+		<td><%= order.status %></td>
+		<td><%= order.manager.name %></td>
 	</tr>
 	<% end %>
 </table>
