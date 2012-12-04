@@ -18,8 +18,11 @@ class SessionsController < ApplicationController
 			redirect_to login_path
 		end
 	rescue => e
-		flash[:error] = e.to_s
-		# flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
+		if e.to_s == 'invalid hash'
+			flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
+		else
+			flash[:error] = "Возникла ошибка: "+e.to_s
+		end
 		redirect_to login_path
 	end
 
