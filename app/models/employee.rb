@@ -7,6 +7,7 @@ class Employee < ActiveRecord::Base
 	attr_accessible :id, :name, :cfo_id, :extension, :password, :password_confirmation
 
 	has_many :order_customers, foreign_key: "initiator", conditions: "closed=0"
+	has_many :user_actions
 
 	def cfo_orders
 		OrderCustomer.where('closed=0 AND cfo_id LIKE ?', "#{cfo_id}%")

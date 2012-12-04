@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
 			redirect_to login_path
 		end
 	rescue => e
-		flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
+		flash[:error] = e.to_s
+		# flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
 		redirect_to login_path
 	end
 
