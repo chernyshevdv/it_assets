@@ -1,0 +1,38 @@
+<h1>Активы <%= @employee.nil? ? 'подразделения' : 'сотрудника' %></h1>
+<%= will_paginate @assetRegisters %>
+<table class="table">
+	<thead>
+		<th>Серийный №</th>
+		<th>Название</th>
+		<th>Стоимость</th>
+		<th>Затраты</th>
+		<th>Статус</th>
+		<th>ЦФО</th>
+		<th>Расположение</th>
+		<th>Ответственный</th>
+	</thead>
+	<tbody>
+		<% @assetRegisters.each do |ar| %>
+		<% asset = ar.asset %>
+			<tr>
+				<td><%= asset.serial_no %></td>
+				<td><%= asset.title %></td>
+				<td><%= asset.cost %></td>
+				<td><%= asset.expenseCost %></td>
+				<td><%= ar.status %></td>
+				<td><%= ar.department.title %></td>
+				<td><%= ar.location.title %></td>
+				<td><%= ar.employee.name %></td>
+			</tr>
+		<% end %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="2">ИТОГО: <%= @parent.assets.count %> шт</td>
+			<td><%= @parent.assets.sum(:cost)%></td>
+			<td><%= @parent.assets.sum(:expenseCost) %></td>
+		</tr>
+	</tfoot>
+</table>
+
+</ul>

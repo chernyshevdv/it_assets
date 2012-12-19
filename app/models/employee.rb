@@ -8,6 +8,8 @@ class Employee < ActiveRecord::Base
 
 	has_many :order_customers, foreign_key: "initiator", conditions: "closed=0"
 	has_many :user_actions
+	has_many :asset_registers, class_name: 'AssetRegister', foreign_key: 'responsible', conditions: '[current]=1'
+	has_many :assets, through: :asset_registers
 
 	def cfo_orders
 		OrderCustomer.where('closed=0 AND cfo_id LIKE ?', "#{cfo_id}%")

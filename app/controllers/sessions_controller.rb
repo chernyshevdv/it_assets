@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 				redirect_to current_user
 			end
 		else
-			flash[:error] = 'Login or password is incorrect.'
+			flash[:error] = 'Неверная пара "логин-пароль".'
 			redirect_to login_path
 		end
 	rescue => e

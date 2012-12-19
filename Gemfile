@@ -9,6 +9,8 @@ gem 'activerecord-sqlserver-adapter'
 gem 'bootstrap-sass'
 gem 'rails-i18n'
 gem 'bcrypt-ruby'
+gem 'will_paginate', '~> 3.0.0'
+gem 'bootstrap-will_paginate'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

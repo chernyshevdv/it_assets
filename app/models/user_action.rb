@@ -2,7 +2,7 @@ class UserAction < ActiveRecord::Base
 	self.table_name = "regUserActionHistory"
 	belongs_to :employee
 
-	attr_accessible :action
+	attr_accessible :action, :ip
 
 	after_initialize :init
 
