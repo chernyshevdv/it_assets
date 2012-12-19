@@ -15,3 +15,9 @@
 	</tr>
 	<% end %>
 </table>
+<h1>Платежные заявки</h1>
+<%= form_tag('/searchDC', method: 'get') do %>
+	<%= label_tag(:dc, "Номер заявки:") %>
+	<%= text_field_tag(:dc) %>
+	<%= submit_tag("Поиск") %>
+<% end %>

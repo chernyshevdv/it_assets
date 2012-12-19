@@ -1,0 +1,30 @@
+<h1>Платежная заявка <%= @paymentRequest.id %></h1>
+<dl>
+	<dt>Название:</dt><dd><%= @paymentRequest.title %></dd>
+	<dt>Договор:</dt><dd><%= @paymentRequest.contract_id %></dd>
+	<dt>Итого:</dt><dd><%= @paymentRequest.amount %></dd>
+	<dt>Оплачено?</dt><dd><%= @paymentRequest.paid %></dd>
+	<dt>Дата оплаты</dt><dd><%= @paymentRequest.paymentDate %></dd>
+</dl>
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Номенклатура</th>
+			<th>Статья</th>
+			<th>Подразделение</th>
+			<th>Стоимость</th>
+			<th>Статус</th>
+			<th><abbr title="Примерная дата прихода">Приход</abbr></th>
+			<th>Документы</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @paymentRequest.order_rows %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">ИТОГО:</td>
+			<td><%= @paymentRequest.amount %></td>
+		</tr>
+	</tfoot>
+</table>

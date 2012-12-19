@@ -22,26 +22,20 @@
 	<thead>
 		<tr>
 			<th>Номенклатура</th>
+			<th>Статья</th>
 			<th>Подразделение</th>
 			<th>Стоимость</th>
 			<th>Статус</th>
 			<th><abbr title="Примерная дата прихода">Приход</abbr></th>
+			<th>Документы</th>
 		</tr>
 	</thead>
 	<tbody>
-	<% @order.order_rows.each do |row| %>
-		<tr>
-			<td><%= row.article.title %></td>
-			<td><%= row.department.title %></td>
-			<td class="right"><nobr><%= row.quantity %> &times; <%= row.price %></nobr></td>
-			<td><%= row.status %></td>
-			<td><%= l row.accept.stamp.to_date, :format => :default unless row.accept.nil? %></td>
-		</tr>
-	<% end %>
+	<%= render @order.order_rows %>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="2"><strong>ИТОГО:</strong></td>
+			<td colspan="3"><strong>ИТОГО:</strong></td>
 			<td colspan="3"><strong><%= number_to_currency(@order.total, locale: :ru) %></strong></td>
 		</tr>
 	</tfoot>

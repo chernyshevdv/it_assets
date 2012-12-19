@@ -14,6 +14,7 @@ ItAssets::Application.routes.draw do
   #   resources :products
   resources :sessions
   resources :order_customers
+  resources :payment_requests, :constraints => { :id => /.*/ }
   resources :employees do
     resources :assets
   end
@@ -24,6 +25,7 @@ ItAssets::Application.routes.draw do
 
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
+  match '/searchDC', to: 'payment_requests#search'
 
   root to: 'static_pages#index'
 
