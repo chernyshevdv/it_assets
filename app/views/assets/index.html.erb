@@ -1,4 +1,4 @@
-<h1>Активы <%= @employee.nil? ? 'подразделения' : 'сотрудника' %></h1>
+<h1>Активы <%= @employee.nil? ? "подразделения #{@department.title}" : "сотрудника #{@employee.name}" %></h1>
 <%= will_paginate @assetRegisters %>
 <table class="table">
 	<thead>

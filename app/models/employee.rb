@@ -6,6 +6,7 @@ class Employee < ActiveRecord::Base
 
 	attr_accessible :id, :name, :cfo_id, :extension, :password, :password_confirmation
 
+	belongs_to :department, foreign_key: 'cfo_id'
 	has_many :order_customers, foreign_key: "initiator", conditions: "closed=0"
 	has_many :user_actions
 	has_many :asset_registers, class_name: 'AssetRegister', foreign_key: 'responsible', conditions: '[current]=1'
