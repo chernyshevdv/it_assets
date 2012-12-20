@@ -8,18 +8,15 @@ class SessionsController < ApplicationController
 		if user && (user.password_digest.nil? || user.authenticate(params[:session][:password]))
 			sign_in user
 			if user.password_digest.nil?
-				flash[:notice] = 'Ваш пароль пуст! Это очень нехорошо. Настройте свой пароль!' 
-				redirect_to edit_employee_path(current_user)
+				redirect_to edit_employee_path(current_user), notice: t('login.empty_password')
 			else
 				redirect_to current_user
 			end
 		else
-			flash[:error] = 'Неверная пара "логин-пароль".'
-			redirect_to login_path
+			redirect_to login_path, alert: t('login.wrong_login_or_password')
 		end
 	rescue BCrypt::Errors::InvalidHash
-		flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
-		redirect_to login_path
+		redirect_to login_path, alert: t('login.password_not_set')
 	end
 
 	def show
