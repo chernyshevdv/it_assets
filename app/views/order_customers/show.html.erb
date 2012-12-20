@@ -14,9 +14,11 @@
 	<tr>
 		<td><strong>Статус:</strong></td><td><%= @order.status %></td>
 	</tr>
+	<% if !@order.openDate.nil? %>
 	<tr>
-		<td><strong>Создан:</strong></td><td><%= l @order.openDate.to_date, format: :default unless @order.openDate.nil? %></td>
+		<td><strong>Создан:</strong></td><td><%= l @order.openDate.to_date, format: :default %></td>
 	</tr>
+	<% end %>
 	<% if @order.closed %>
 	<tr>
 		<td><strong>Закрыт:</strong></td><td><%= @order.closeDate %></td>

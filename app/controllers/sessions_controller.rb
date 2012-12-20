@@ -17,12 +17,8 @@ class SessionsController < ApplicationController
 			flash[:error] = 'Неверная пара "логин-пароль".'
 			redirect_to login_path
 		end
-	rescue => e
-		if e.to_s == 'invalid hash'
-			flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
-		else
-			flash[:error] = "Возникла ошибка: "+e.to_s
-		end
+	rescue BCrypt::Errors::InvalidHash
+		flash[:error] = 'Ваш пароль не установлен. Обратитесь к менеджеру по снабжению по телефону 1055!'
 		redirect_to login_path
 	end
 

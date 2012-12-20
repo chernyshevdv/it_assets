@@ -12,4 +12,5 @@ class OrderRow < ActiveRecord::Base
 	belongs_to :importance
 
 	default_scope order: 'importance_id, row_id ASC'
+
 end
