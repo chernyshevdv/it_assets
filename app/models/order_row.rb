@@ -9,6 +9,7 @@ class OrderRow < ActiveRecord::Base
 	belongs_to :article, foreign_key: "goods_id", class_name: "Article"
 	belongs_to :department, foreign_key: "cfo_id", class_name: "Department"
 	belongs_to :expense_type, foreign_key: 'expense_id'
+	belongs_to :importance
 
-	default_scope order: 'row_id ASC'
+	default_scope order: 'importance_id, row_id ASC'
 end

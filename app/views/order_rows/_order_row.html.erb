@@ -5,6 +5,7 @@
 	<td class="right"><nobr><%= order_row.quantity %> &times; <%= order_row.price %></nobr></td>
 	<td><%= order_row.status %></td>
 	<td><%= l order_row.accept.stamp.to_date, :format => :default unless order_row.accept.nil? %></td>
+	<td><%= order_row.importance.annotated_title %></td>
 	<td>
 		<%= link_to "CO-#{order_row.order_customer.id}", (order_row.order_customer) unless order_row.order_customer.nil? %>
 		<%= link_to "SO-#{order_row.supply_order.id}", '#' unless order_row.supply_order.nil? %>

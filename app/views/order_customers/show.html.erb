@@ -1,23 +1,34 @@
 <h1>Заказ №<%= @order.id %></h1>
 <table>
+	<% if !@order.title.nil? %>
 	<tr>
-		<td>
-			<dl>
-				<dt>Название:</dt><dd><%= @order.title %></dd>
-				<dt>Статус:</dt><dd><%= @order.status %></dd>
-				<dt>Создан:</dt><dd><%= @order.openDate %></dd>
-				<dt>Закрыт:</dt><dd><%= @order.closeDate %></dd>
-			</dl>
-		</td>
-		<td valign="top">
-			<dl>
-				<dt>Инициатор:</dt><dd><%= @order.initiator.annotated_name %></dd>
-				<dt>Менеджер:</dt><dd><%= @order.manager.annotated_name %></dd>
-			</dl>
-		</td>
-	</tr>	
+		<td><strong>Название:</strong></td><td><%= @order.title %></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td><strong>Инициатор:</strong></td><td><%= @order.initiator.annotated_name %></td>
+	</tr>
+	<tr>
+		<td><strong>Менеджер ИТ:</strong></td><td><%= @order.manager.annotated_name %></td>
+	</tr>
+	<tr>
+		<td><strong>Статус:</strong></td><td><%= @order.status %></td>
+	</tr>
+	<tr>
+		<td><strong>Создан:</strong></td><td><%= l @order.openDate.to_date, format: :default unless @order.openDate.nil? %></td>
+	</tr>
+	<% if @order.closed %>
+	<tr>
+		<td><strong>Закрыт:</strong></td><td><%= @order.closeDate %></td>
+	</tr>
+	<% end %>
+	<% if !@order.demand.nil? %>
+	<tr>
+		<td colspan="2"><strong>Потребность:</strong><pre><%= @order.demand %></pre></td>
+	</tr>
+	<% end %>
 </table>
-
+<br/>
 <table class="table table-condensed">
 	<thead>
 		<tr>
@@ -27,6 +38,7 @@
 			<th>Стоимость</th>
 			<th>Статус</th>
 			<th><abbr title="Примерная дата прихода">Приход</abbr></th>
+			<th>Важность</th>
 			<th>Документы</th>
 		</tr>
 	</thead>
