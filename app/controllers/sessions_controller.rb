@@ -5,21 +5,14 @@ class SessionsController < ApplicationController
 
 	def create
 		user = Employee.find_by_login(params[:session][:login])
-		return redirect_to login_path, alert: t('login.wrong_login_or_password') if user.nil?
+		return redirect_to login_path, alert: t('login.wrong_password') if user.nil?
 
 		auth = user.auth(params[:session][:password])
 		sign_in user if [:empty_password, :password_not_set, :signed_in].include?(auth)
 
-		case auth
-		when :wrong_password
-			redirect_to login_path, alert: t('login.wrong_login_or_password')
-		when :empty_password
-			redirect_to edit_employee_path(current_user), notice: t('login.empty_password')
-		when :password_not_set
-			redirect_to login_path, notice: t('login.password_not_set')
-		when :signed_in
-			redirect_to current_user
-		end
+		return redirect_to login_path, notice: t("login.#{auth}") if [:wrong_password, :password_not_set].include?(auth)
+		return redirect_to edit_employee_path(current_user), notice: t('login.empty_password') if auth == :empty_password
+		return redirect_to current_user if auth == :signed_in
 	end
 
 	def show
