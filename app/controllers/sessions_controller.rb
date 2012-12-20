@@ -5,16 +5,13 @@ class SessionsController < ApplicationController
 
 	def create
 		user = Employee.find_by_login(params[:session][:login])
-		if user && (user.password_digest.nil? || user.authenticate(params[:session][:password]))
-			sign_in user
-			if user.password_digest.nil?
-				redirect_to edit_employee_path(current_user), notice: t('login.empty_password')
-			else
-				redirect_to current_user
-			end
-		else
-			redirect_to login_path, alert: t('login.wrong_login_or_password')
-		end
+		auth = true if user && user.password_digest.nil?
+		auth = user.authenticate(params[:session][:password]) unless user.nil? || user.password_digest.nil?
+		sign_in user unless user.nil? || !auth
+
+		redirect_to login_path, alert: t('login.wrong_login_or_password') if !signed_in?
+		redirect_to edit_employee_path(current_user), notice: t('login.empty_password') if signed_in? && user.password_digest.nil?
+		redirect_to current_user if signed_in? && auth
 	rescue BCrypt::Errors::InvalidHash
 		redirect_to login_path, alert: t('login.password_not_set')
 	end
