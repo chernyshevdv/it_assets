@@ -1,6 +1,6 @@
 <h1>Платежная заявка <%= @paymentRequest.id %></h1>
 <table class="table">
-		<%= "<tr><td>#{@paymentRequest.title}</td></tr>" unless @paymentRequest.title.nil? %>
+		<%= "<tr><td>#{@paymentRequest.title}</td></tr>".html_safe unless @paymentRequest.title.nil? %>
 		<tr><td><%= @paymentRequest.contract.annotated_title %></td></tr>
 		<%= "<tr class='success'><td>Оплачено #{@paymentRequest.paymentDate}</td></tr>".html_safe if @paymentRequest.paid %>
 		<%= '<tr class="error"><td>Не оплачено</td></tr>'.html_safe if !@paymentRequest.paid %>
