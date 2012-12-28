@@ -20,6 +20,6 @@
 <h1>Платежные заявки</h1>
 <%= form_tag('/searchDC', method: 'get') do %>
 	<%= label_tag(:dc, "Номер заявки:") %>
-	<%= text_field_tag(:dc, autofocus: true) %>
+	<%= text_field_tag(:dc, nil, :autofocus => true) %>
 	<%= submit_tag("Поиск", class: 'btn btn-large btn-primary') %>
 <% end %>
