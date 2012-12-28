@@ -3,6 +3,7 @@
 	<thead>
 		<th>№</th>
 		<th>Название</th>
+		<th>Стоимость</th>
 		<th>Статус</th>
 		<th>Менеджер</th>
 	</thead>	
@@ -10,6 +11,7 @@
 	<tr>
 		<td><%= link_to "#{order.id}", order %></td>
 		<td><%= link_to "#{order.title}", order %></td>
+		<td class="right"><%= number_to_currency(order.total, precision: 2) %></td>
 		<td><%= order.status %></td>
 		<td><%= order.manager.name %></td>
 	</tr>
@@ -18,6 +20,6 @@
 <h1>Платежные заявки</h1>
 <%= form_tag('/searchDC', method: 'get') do %>
 	<%= label_tag(:dc, "Номер заявки:") %>
-	<%= text_field_tag(:dc) %>
-	<%= submit_tag("Поиск") %>
+	<%= text_field_tag(:dc, autofocus: true) %>
+	<%= submit_tag("Поиск", class: 'btn btn-large btn-primary') %>
 <% end %>
