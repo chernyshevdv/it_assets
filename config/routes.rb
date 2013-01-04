@@ -21,6 +21,10 @@ ItAssets::Application.routes.draw do
   resources :departments, :constraints => { :id => /.*/ } do
     resources :assets
   end
+  resources :shops, :constraints => { :id => /.*/ } do
+    resource :assets
+  end
+  
   resources :static_pages
 
   match '/login', to: 'sessions#new'

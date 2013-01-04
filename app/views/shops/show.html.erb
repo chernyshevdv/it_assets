@@ -1,0 +1,23 @@
+<center><h1><%= @shop.title %></h1></center>
+<h2>Обеспеченность активами</h2>
+<table class="table table-condensed">
+	<thead>
+		<th>Вид актива</th>
+		<th>Норматив</th>
+		<th>Факт</th>
+		<th>Обеспеченность</th>
+	</thead>
+	<% @shop.getAssetFill.each do |expense| %>
+	<% fill = (expense[:fact].to_f / expense[:norm].to_f) * 100 %>
+	<tr <%= 'color="red"' if fill < 75 %>>
+		<td><%= expense[:expense].title %></td>
+		<td class="right"><%= expense[:norm] %></td>
+		<td class="right"><%= expense[:fact] %></td>
+		<td class="right"><%= number_to_percentage(fill, precision: 0) %></td>
+	</tr>
+	<% end %>
+	<tfoot>
+		<td colspan="3"><strong>СРЕДНЕЕ:</strong></td>
+		<td class="right"><strong><%= number_to_percentage(@shop.getAssetFillPercent * 100, precision: 0) %></strong></td>
+	</tfoot>
+</table>

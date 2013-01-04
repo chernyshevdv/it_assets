@@ -16,7 +16,8 @@ class Shop < Department
   def getAssetFill
   	records = []
   	records << getPOSesRecord << getPrintersRecord << getComputersRecord << getMFUsRecord << getPhonesRecord << getSwitchesRecord 
-  	records << getAPsRecord << getRoutersRecord
+  	records << getAPsRecord << getRoutersRecord << getServerRecord << getVisitCounterRecord << getPrinterZebraRecord << getFaxRecord
+  	records << getTCDRecord << getBarcodeScanerRecord
   end
 
   def getPOSesRecord
@@ -82,4 +83,53 @@ class Shop < Department
   		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Router]) 
   	}
   end
+
+  def getServerRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Server]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Server]) 
+  	}
+  end
+
+  def getVisitCounterRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:VisitCounter]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:VisitCounter]) 
+  	}
+  end
+
+  def getPrinterZebraRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:PrinterZebra]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:PrinterZebra]) 
+  	}
+  end
+
+  def getFaxRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Fax]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Fax]) 
+  	}
+  end
+
+  def getTCDRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:TCD]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:TCD]) 
+  	}
+  end  
+
+  def getBarcodeScanerRecord
+  	record = { 
+  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:BarcodeScaner]), 
+  		norm: 1, 
+  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:BarcodeScaner]) 
+  	}
+  end  
+    
 end

@@ -1,5 +1,8 @@
+<% 
+	fillPercent = shop.getAssetFillPercent * 100 
+%>
 <tr>
-	<td><%= shop.id %></td>
+	<td><%= link_to shop.id, "/departments/#{shop.id}" %></td>
 	<td><%= shop.title %></td>
-	<td><%= number_to_percentage(shop.getAssetFillPercent * 100, precision: 0) %></td>
+	<td <%= 'class="red"'.html_safe if fillPercent == 0 %>><%= number_to_percentage(fillPercent, precision: 0) %></td>
 </tr>

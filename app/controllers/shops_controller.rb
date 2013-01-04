@@ -1,0 +1,2 @@
+class ShopsController < DepartmentsController
+end

@@ -4,6 +4,7 @@
 	<thead>
 		<th>Серийный №</th>
 		<th>Название</th>
+		<th>Статья</th>
 		<th>Стоимость</th>
 		<th>Затраты</th>
 		<th>Статус</th>
@@ -17,6 +18,7 @@
 			<tr>
 				<td><%= asset.serial_no %></td>
 				<td><%= asset.title %></td>
+				<td><%= asset.article.expense_type.title unless asset.article.nil? %></td>
 				<td><%= asset.cost %></td>
 				<td><%= asset.expenseCost %></td>
 				<td><%= ar.status %></td>
