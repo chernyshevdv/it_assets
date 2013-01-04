@@ -21,44 +21,23 @@ class Shop < Department
   end
 
   def getPOSesRecord
-
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:POS]), 
-  		norm: posCount, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:POS]) 
-  	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:POS], posCount)
   end
 
   def getPrintersRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Printer]), 
-  		norm: posGroupCount, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Printer]) 
-  	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:Printer], posGroupCount || 0 )
   end
 
   def getComputersRecord
-  	record = { 
-		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Computer]), 
-		norm: (salesManagersCount || 0) +4, 
-		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Computer]) 
-	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:Computer], (salesManagersCount || 0)+4 )
   end
 
   def getMFUsRecord
-  	record = { 
-		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:MFU]), 
-		norm: 2, 
-		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:MFU]) 
-	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:MFU], 2)
   end
 
   def getPhonesRecord
-  	record = { 
-		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Phone]), 
-		norm: (salesManagersCount || 0)+6, 
-		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Phone]) 
-}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:Phone], (salesManagersCount || 0) + 6)
   end
 
   def getSwitchesRecord
