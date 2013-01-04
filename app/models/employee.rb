@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Employee < ActiveRecord::Base
 	self.table_name_prefix = 'dbo.'
 	self.table_name = 'refEmployees'
@@ -11,9 +12,14 @@ class Employee < ActiveRecord::Base
 	has_many :user_actions
 	has_many :asset_registers, class_name: 'AssetRegister', foreign_key: 'responsible', conditions: '[current]=1'
 	has_many :assets, through: :asset_registers
+	belongs_to :managed_department, class_name: 'Department', foreign_key: 'managed_cfo'
 
 	def cfo_orders
 		OrderCustomer.where('closed=0 AND cfo_id LIKE ?', "#{cfo_id}%")
+	end
+
+	def subordinate_departments
+		Department.where("id LIKE ?","#{managed_department.id}%").order('id ASC') unless managed_department.nil?
 	end
 
 	def annotated_name

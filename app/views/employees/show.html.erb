@@ -15,6 +15,15 @@
 	</tr>
 	<% end %>
 </table>
+<center><h1>Мои подразделения</h1></center>
+<table class="table table-condensed">
+	<thead>
+		<th>№</th>
+		<th>Название</th>
+		<th>Обеспеченность активами</th>
+	</thead>
+	<%= render @user.subordinate_departments %>
+</table>
 <h1>Платежные заявки</h1>
 <%= form_tag(payment_request_path) do %>
 	<%= label_tag(:id, "Номер заявки:") %>
