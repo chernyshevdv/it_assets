@@ -21,6 +21,7 @@ class Shop < Department
   end
 
   def getPOSesRecord
+
   	record = { 
   		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:POS]), 
   		norm: posCount, 
@@ -61,75 +62,49 @@ class Shop < Department
   end
 
   def getSwitchesRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Switch]), 
-  		norm: 2, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Switch]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:Switch], 2)
   end
 
   def getAPsRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:WiFi]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:WiFi]) 
-  	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:WiFi], 1)
   end
 
   def getRoutersRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Router]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Router]) 
-  	}
+    getRecord(AssetsHelper::EXPENSE_TYPES[:Router], 1)
   end
 
   def getServerRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Server]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Server]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:Server], 1)
   end
 
   def getVisitCounterRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:VisitCounter]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:VisitCounter]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:VisitCounter], 1)
   end
 
   def getPrinterZebraRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:PrinterZebra]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:PrinterZebra]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:PrinterZebra], 1)
   end
 
   def getFaxRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:Fax]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:Fax]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:Fax], 1)
   end
 
   def getTCDRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:TCD]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:TCD]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:TCD], 1)
   end  
 
   def getBarcodeScanerRecord
-  	record = { 
-  		expense: ExpenseType.find(AssetsHelper::EXPENSE_TYPES[:BarcodeScaner]), 
-  		norm: 1, 
-  		fact: getAssetCountByExpenseType(AssetsHelper::EXPENSE_TYPES[:BarcodeScaner]) 
-  	}
+  	getRecord(AssetsHelper::EXPENSE_TYPES[:BarcodeScaner], posCount)
   end  
-    
+
+private
+  def getRecord(expenseType, norm)
+    record = {
+      expense: ExpenseType.find(expenseType),
+      norm: norm,
+      fact: getAssetCountByExpenseType(expenseType)
+    }
+end
+
+
 end
