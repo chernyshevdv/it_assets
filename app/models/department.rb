@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Department < ActiveRecord::Base
 	self.table_name = 'refCFO'
 
@@ -10,6 +11,6 @@ class Department < ActiveRecord::Base
 
 	def getAssetCountByExpenseType(expense_id)
 		self.asset_registers.joins('JOIN refAssets a ON a.serial_no=regAssetLocations.asset_id JOIN refGoods g ON a.model_id=g.id')
-			.where("g.expense_id" => expense_id).count
+			.where("g.expense_id = ? AND regAssetLocations.[current] = ? AND regAssetLocations.status = ?", expense_id, true, 'Эксплуатация').count
 	end
 end
