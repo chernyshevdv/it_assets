@@ -15,9 +15,13 @@ class Shop < Department
 
   def getAssetFill
   	records = []
-  	records << getPOSesRecord << getPrintersRecord << getComputersRecord << getMFUsRecord << getPhonesRecord << getSwitchesRecord 
-  	records << getAPsRecord << getRoutersRecord << getServerRecord << getVisitCounterRecord << getPrinterZebraRecord << getFaxRecord
-  	records << getTCDRecord << getBarcodeScanerRecord
+    self.methods.each do |meth|
+      records << self.method(meth).call if meth.to_s =~ /get(.*)Record/
+    end
+  	# records << getPOSesRecord << getPrintersRecord << getComputersRecord << getMFUsRecord << getPhonesRecord << getSwitchesRecord 
+  	# records << getAPsRecord << getRoutersRecord << getServerRecord << getVisitCounterRecord << getPrinterZebraRecord << getFaxRecord
+  	# records << getTCDRecord << getBarcodeScanerRecord
+    return records
   end
 
   def getPOSesRecord
