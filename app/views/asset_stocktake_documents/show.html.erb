@@ -1,0 +1,45 @@
+<h1>Документ инвентаризации №<%= @document.id %></h1>
+<table class="table">
+	<tr>
+		<td>Дата:</td>
+		<td><%= l(@document.stamp, format: :long)  unless @document.stamp.nil? %></td>
+	</tr>
+	<tr>
+		<td>Расположение:</td>
+		<td><%= @document.location.title unless @document.location.nil? %></td>
+	</tr>
+	<tr>
+		<td>Ответственный:</td>
+		<td><%= @document.responsible.annotated_name unless @document.responsible.nil? %></td>
+	</tr>
+	<tr>
+		<td>Провёл:</td>
+		<td><%= @document.approver.annotated_name unless @document.approver.nil? %></td>
+	</tr>
+	<tr>
+		<td>Проведено:</td>
+		<td><i class="<%= @document.posted ? 'icon-ok-sign' : 'icon-minus-sign' %>"></i></td>
+	</tr>
+	<% if !@document.memo.nil? %>
+	<tr>
+		<td>Примечание:</td>
+		<td><%= @document.memo %></td>
+	</tr>
+	<% end %>
+</table>
+<table class="table table-condensed">
+	<caption><h2>Активы</h2></caption>
+	<thead>
+		<tr>
+			<th>Серийный №</th>
+			<th>Название</th>
+			<th>Статус</th>
+			<th>Модель</th>
+			<th>Стоимость</th>
+			<th>Затраты</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @document.rows %>
+	</tbody>
+</table>

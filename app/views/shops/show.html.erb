@@ -21,3 +21,4 @@
 		<td class="right"><strong><%= number_to_percentage(@shop.getAssetFillPercent * 100, precision: 0) %></strong></td>
 	</tfoot>
 </table>
+<%= link_to 'Создать инвентаризацию', {:controller => 'asset_stocktake_documents', :department_id => @shop.id}, :method => :post %>

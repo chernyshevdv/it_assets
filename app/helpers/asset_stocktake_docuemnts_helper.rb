@@ -1,0 +1,2 @@
+module AssetStocktakesHelper
+end

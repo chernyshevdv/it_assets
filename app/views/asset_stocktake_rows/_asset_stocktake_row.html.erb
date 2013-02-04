@@ -1,0 +1,9 @@
+<% row = asset_stocktake_row %>
+<tr>
+	<td><%= row.asset_id %></td>
+	<td><%= row.title %></td>
+	<td><%= row.status %></td>
+	<td><%= row.article.title unless row.article.nil? %></td>
+	<td><%= row.assetValue %></td>
+	<td><%= row.expenseValue %></td>
+</tr>
