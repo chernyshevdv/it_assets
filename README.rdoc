@@ -1,5 +1,5 @@
 == it_assets
 
-{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/chernyshevdv/it_assets]
+{<img src="https://codeclimate.com/github/chernyshevdv/it_assets.png" />}[https://codeclimate.com/github/chernyshevdv/it_assets]
 
 It's a project to track IT assets and those procurement. Based on an MSSQL database.
