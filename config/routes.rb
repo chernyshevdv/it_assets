@@ -20,12 +20,17 @@ ItAssets::Application.routes.draw do
   end
   resources :departments, :constraints => { :id => /.*/ } do
     resources :assets
-    resources :asset_stocktake_documents
+    resources :asset_stocktake_documents do
+      resources :asset_stocktake_rows
+    end
   end
   resources :shops, :constraints => { :id => /.*/ } do
     resource :assets
     resources :asset_stocktake_documents
   end
+
+  resources :asset_stocktake_documents
+  resources :asset_stocktake_rows
 
   resources :static_pages
 

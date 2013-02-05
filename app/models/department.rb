@@ -15,8 +15,10 @@ class Department < ActiveRecord::Base
 			.where("g.expense_id = ? AND regAssetLocations.[current] = ? AND regAssetLocations.status = ?", expense_id, true, 'Эксплуатация').count
 	end
 
-	def generateAssetStocktake()
+	def generateAssetStocktake(employee)
 		doc = stocktakes.build()
+		doc.responsibleEmployee = employee if employee.instance_of? Employee
+		
 		doc.save
 
 		asset_registers.each do |ar|

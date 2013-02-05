@@ -12,7 +12,8 @@ class Employee < ActiveRecord::Base
 	has_many :user_actions
 	has_many :asset_registers, class_name: 'AssetRegister', foreign_key: 'responsible', conditions: '[current]=1'
 	has_many :assets, through: :asset_registers
-	belongs_to :managed_department, class_name: 'Department', foreign_key: 'managed_cfo'
+	has_many :managed_CFOs, class_name: 'EmployeeManagesCfos' # many-to-many table
+	has_many :managed_departments, class_name: 'Department', through: :managed_CFOs
 
 	def cfo_orders
 		OrderCustomer.where('closed=0 AND cfo_id LIKE ?', "#{cfo_id}%")

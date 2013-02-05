@@ -29,7 +29,7 @@ private
   end
 
   def correct_user
-  	if !current_user?(@employee) && current_user.department != @department && !current_user.subordinate_departments.include?(@department)
+  	if !current_user?(@employee) && current_user.department != @department && !current_user.managed_departments.include?(@department)
   		redirect_to current_user, notice: 'Сотрудник может видеть только свои активы или активы своего подразделения!'
   	end
   end

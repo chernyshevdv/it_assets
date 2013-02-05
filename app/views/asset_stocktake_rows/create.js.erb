@@ -1,0 +1,4 @@
+/* Add newly created row */
+$('#stocktake_rows').append('<%= escape_javascript( render( :partial => "form", :asset_stocktake_row => @row) ) %>');
+/* Clean the form */
+$('#new_asset_stocktake_row')[0].reset();

@@ -1,4 +1,5 @@
 <% row = asset_stocktake_row %>
+<%= div_for row do %>
 <tr>
 	<td><%= row.asset_id %></td>
 	<td><%= row.title %></td>
@@ -6,4 +7,6 @@
 	<td><%= row.article.title unless row.article.nil? %></td>
 	<td><%= row.assetValue %></td>
 	<td><%= row.expenseValue %></td>
+	<td><%= link_to('Удалить', [row], {:method => :delete, :class => :delete, :remote => true} ) %></td>
 </tr>
+<% end %>

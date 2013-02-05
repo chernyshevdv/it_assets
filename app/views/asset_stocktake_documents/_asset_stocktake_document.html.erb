@@ -1,0 +1,14 @@
+<% doc = asset_stocktake_document %>
+<tr>
+	<td>
+		<%= link_to('<i class="icon-eye-open"></i>'.html_safe, asset_stocktake_document, { action: :show })  %></i>
+		&nbsp;
+		<%= link_to('<i class="icon-edit"></i>'.html_safe, [:edit, asset_stocktake_document]) %>
+	</td>
+	<td><%= doc.id %></td>
+	<td><%= doc.stamp %></td>
+	<td><%= doc.location.title unless doc.location.nil? %></td>
+	<td><%= doc.responsibleEmployee.annotated_name unless doc.responsibleEmployee.nil? %></td>
+	<td> <%= doc.approverEmployee.annotated_name unless doc.approverEmployee.nil? %></td>
+	<td> <%= doc.posted %></td>
+</tr>

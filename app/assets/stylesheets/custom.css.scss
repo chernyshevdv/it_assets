@@ -74,6 +74,12 @@ footer {
 	}
 }
 
+.table-nohover {
+	tbody {
+		tr:hover { background-color: none;}
+	}
+}
+
 td.right { 
 	text-align: right;
  }

@@ -15,11 +15,15 @@ class AssetStocktakeDocumentsController < ApplicationController
 	def create
 		if !params[:department_id].nil?
 			dept = Department.find(params[:department_id])
-			stocktake = dept.generateAssetStocktake
+			stocktake = dept.generateAssetStocktake(current_user)
 
-			redirect_to [dept, stocktake]
+			redirect_to [:edit, dept, stocktake]
 		else
 			redirect_to dept
 		end
+	end
+
+	def edit
+		@document = AssetStocktakeDocument.find(params[:id])
 	end
 end
