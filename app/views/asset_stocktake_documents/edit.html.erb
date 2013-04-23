@@ -10,7 +10,7 @@
 	</tr>
 	<tr>
 		<td>Провёл</td>
-		<td> <%= @document.approver.annotated_name unless @document.approver.nil? %> </td>
+		<td> <%= @document.approverEmployee.annotated_name unless @document.nil? || @document.approverEmployee.nil? %> </td>
 	</tr>
 	<tr>
 		<td><%= f.label :memo, "Комментарий" %></td>
