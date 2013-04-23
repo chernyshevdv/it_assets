@@ -37,6 +37,8 @@
 									<li><%= link_to "Выход", logout_path %></li>
 								</ul>
 							</li>
+							<li><%= link_to "Профиль", edit_employee_path(current_user) %></li>
+							<li><%= link_to "Активы подразделения", "#{department_assets_path(department_id: current_user.cfo_id)}" %></li
 						<% end %>
 					</ul>
 				</nav>

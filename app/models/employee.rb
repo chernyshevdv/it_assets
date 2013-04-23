@@ -15,6 +15,8 @@ class Employee < ActiveRecord::Base
 	has_many :managed_CFOs, class_name: 'EmployeeManagesCfos' # many-to-many table
 	has_many :managed_departments, class_name: 'Department', through: :managed_CFOs
 
+	validates_length_of :extension, :maximum => 10
+
 	def cfo_orders
 		OrderCustomer.where('closed=0 AND cfo_id LIKE ?', "#{cfo_id}%")
 	end
