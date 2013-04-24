@@ -5,6 +5,7 @@
 			<td> <%= row.title %> </td>
 			<td><%= f.select(:status, AssetStatus.all.map {|st| st.id } ) %></td>	
 			<td> <%= row.article.title unless row.article.nil? %> </td>	
+			<td><%= row.connected_to %></td>
 			<td><%= f.submit("Изменить", {class: 'btn btn-mini'}) %></td>			
 	</tr>
 <% end %>

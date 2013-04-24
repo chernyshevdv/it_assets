@@ -24,6 +24,7 @@
 		<th>Название</th>
 		<th>Статус</th>
 		<th>Модель</th>
+		<th>Подключено к</th>
 		<th>Действие</th>
 	</thead>
 	<tbody>
@@ -32,9 +33,10 @@
 				<%= form_for row, remote: true do |f| %>
 					<tr id="stocktake_row_<%= row.id %>">
 							<td><%= row.asset_id %></td>
-							<td> <%= row.title %> </td>
+							<td> <%= f.text_field :title %> </td>
 							<td><%= f.select(:status, AssetStatus.all.map {|st| st.id } ) %></td>	
-							<td> <%= row.article.title unless row.article.nil? %> </td>	
+							<td> <%= row.article.title unless row.article.nil? %> </td>
+							<td><%= f.text_field :connected_to %></td>	
 							<td><%= f.submit("Изменить", {class: 'btn btn-mini'}) %></td>			
 					</tr>
 				<% end %>
@@ -48,6 +50,7 @@
 						<td> <%= f.text_field :title %> </td>
 						<td><%= f.select(:status, AssetStatus.all.map {|st| st.id } ) %></td>	
 						<td> -- </td>	
+						<td><%= f.text_field :connected_to %></td>
 						<td><%= f.submit("Создать", {class: 'btn btn-mini'}) %></td>			
 				</tr>
 		<% end %>

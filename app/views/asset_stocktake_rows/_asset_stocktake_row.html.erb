@@ -5,6 +5,7 @@
 	<td><%= row.title %></td>
 	<td><%= row.status %></td>
 	<td><%= row.article.title unless row.article.nil? %></td>
+	<td><%= row.connected_to %></td>
 	<td><%= row.assetValue %></td>
 	<td><%= row.expenseValue %></td>
 	<% if (params[:act] != 'print') %>
