@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<% if params[:act] != 'print' %>
 	<header class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
 			<div class="container">
@@ -45,14 +46,17 @@
 			</div>
 		</div>
 	</header>
+	<% end %>
 	<div class="container">
 		<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>"><%= value %></div>
 		<% end %>
 		<%= yield %>
+		<% if params[:act] != 'print' %>
 		<footer class="footer">
 			<center><small>Комментарии и пожелания принимаю <a href="http://jira.tltgt:8070/browse/ITASSETS" target="_blank">здесь</a> или по телефону 1050.</small></center>
 		</footer>
+		<% end %>
 	</div>
 </body>
 </html>

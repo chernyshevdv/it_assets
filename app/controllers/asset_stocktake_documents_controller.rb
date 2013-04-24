@@ -26,4 +26,9 @@ class AssetStocktakeDocumentsController < ApplicationController
 	def edit
 		@document = AssetStocktakeDocument.find(params[:id])
 	end
+
+	def print
+		@act = 'print'
+		show()
+	end
 end

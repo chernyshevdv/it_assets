@@ -2,7 +2,7 @@
 <table class="table">
 	<tr>
 		<td>Дата:</td>
-		<td><%= l(@document.stamp, format: :long)  unless @document.stamp.nil? %></td>
+		<td><%= l(@document.stamp, format: :short)  unless @document.stamp.nil? %></td>
 	</tr>
 	<tr>
 		<td>Расположение:</td>
@@ -26,6 +26,11 @@
 		<td><%= @document.memo %></td>
 	</tr>
 	<% end %>
+	<% if params[:act] != 'print' %>
+	<tr>
+		<td colspan="2"><%= link_to("Печать",url_options = {act: "print"}, html_options = {target: "_blank", class: "btn"}) %></td>
+	</tr>
+	<% end %>
 </table>
 <table class="table table-condensed">
 	<caption><h2>Активы</h2></caption>
@@ -37,7 +42,9 @@
 			<th>Модель</th>
 			<th>Стоимость</th>
 			<th>Затраты</th>
+			<% if params[:act] != 'print' %>
 			<th>Action</th>
+			<% end %>
 		</tr>
 	</thead>
 	<tbody>

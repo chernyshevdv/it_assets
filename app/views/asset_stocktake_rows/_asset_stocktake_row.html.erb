@@ -7,6 +7,8 @@
 	<td><%= row.article.title unless row.article.nil? %></td>
 	<td><%= row.assetValue %></td>
 	<td><%= row.expenseValue %></td>
+	<% if (params[:act] != 'print') %>
 	<td><%= link_to('Удалить', [row], {:method => :delete, :class => :delete, :remote => true} ) %></td>
+	<% end %>
 </tr>
 <% end %>
